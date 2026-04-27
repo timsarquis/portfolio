@@ -592,11 +592,14 @@ iframe.thumb {
   inset: 0;
   z-index: 1000;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1.5rem;
   background: rgba(9,9,9,0);
   pointer-events: none;
   transition: background 0.4s ease;
+  padding: 4rem 2rem 3rem;
 }
 .lightbox.open {
   background: rgba(9,9,9,0.95);
@@ -608,6 +611,7 @@ iframe.thumb {
   opacity: 0;
   transform: scale(0.96);
   transition: opacity 0.4s ease, transform 0.4s ease;
+  flex-shrink: 0;
 }
 .lightbox.open .lightbox-inner {
   opacity: 1;
@@ -621,8 +625,8 @@ iframe.thumb {
 }
 .lightbox-close {
   position: absolute;
-  top: 2rem;
-  right: 2.5rem;
+  top: 1.5rem;
+  right: 2rem;
   width: 44px;
   height: 44px;
   cursor: pointer;
@@ -644,15 +648,14 @@ iframe.thumb {
 .lightbox-close::before { transform: rotate(45deg); }
 .lightbox-close::after { transform: rotate(-45deg); }
 .lightbox-bottom {
-  position: absolute;
-  bottom: 2rem;
-  left: 2.5rem;
-  right: 2.5rem;
+  width: min(90vw, 1100px);
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
   opacity: 0;
   transition: opacity 0.4s 0.15s;
+  text-align: center;
 }
 .lightbox.open .lightbox-bottom { opacity: 1; }
 .lightbox-title {
@@ -661,16 +664,14 @@ iframe.thumb {
   font-weight: 300;
   color: var(--muted);
 }
-.lightbox-fallback {
-  font-family: var(--ff-cond);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s;
+.lightbox-desc {
+  font-family: var(--ff-ui);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(240,235,225,0.4);
+  line-height: 1.6;
+  max-width: 600px;
 }
-.lightbox-fallback:hover { color: var(--white); }
 
 /* ─────────────────────────────────────────────
    CONTACT
@@ -838,7 +839,8 @@ footer p {
   .statement-image-wrap { height: 60vh; }
   #about { padding: 6rem 1.75rem; }
   .about-inner { grid-template-columns: 1fr; gap: 4rem; }
-  .about-left { position: static; max-width: 280px; }
+  .about-left { position: static; width: 100%; max-width: 100%; display: flex; flex-direction: column; align-items: center; }
+  .about-photo-wrap { max-width: 260px; }
   #portfolio { padding: 6rem 1.75rem; }
   .project-grid { grid-template-columns: 1fr; }
   .project-featured { aspect-ratio: 16/9; }
@@ -944,86 +946,61 @@ footer p {
     <h2 class="portfolio-headline reveal">Stories that<br><em>don't let go.</em></h2>
 
     <!-- Featured project -->
-    <div class="project-featured reveal" data-vimeo-id="1184488286" data-title="Killer High: The Series">
+    <div class="project-featured reveal" data-vimeo-id="1184488286" data-title="Killer High: The Series" data-desc="Award winning series that exposes the fentanyl crisis through real stories of loss, addiction, and hope for recovery.">
       <div class="thumb-placeholder">Killer High: The Series</div>
       <img class="thumb" src="https://img.youtube.com/vi/EMkl0iYqA7o/maxresdefault.jpg"
         onerror="this.style.display='none';" alt="Killer High: The Series">
       <div class="play-btn"></div>
       <div class="project-overlay-grad"></div>
       <div class="project-info">
-        <div class="project-tags">
-          <span class="project-tag">True Crime</span>
-          <span class="project-tag">Series</span>
-        </div>
         <h3 class="project-title">Killer High: The Series</h3>
-        <p class="project-desc">Award winning series that exposes the fentanyl crisis through real stories of loss, addiction, and hope for recovery.</p>
       </div>
     </div>
 
     <!-- Grid -->
     <div class="project-grid">
 
-      <div class="project-card reveal" data-vimeo-id="1184489402" data-title="Evil in the Archives">
+      <div class="project-card reveal" data-vimeo-id="1184489402" data-title="Evil in the Archives" data-desc="A gripping true crime series that uncovers forgotten cases through raw, unfiltered local news archives that tell the story themselves.">
         <div class="thumb-placeholder">Evil in the Archives</div>
         <img class="thumb" src="https://vumbnail.com/1184489402.jpg"
           onerror="this.style.display='none';" alt="Evil in the Archives">
         <div class="play-btn"></div>
         <div class="project-overlay-grad"></div>
         <div class="project-info">
-          <div class="project-tags">
-            <span class="project-tag">True Crime</span>
-            <span class="project-tag">Docu-Series</span>
-            <span class="project-tag">Hulu</span>
-          </div>
           <h3 class="project-title">Evil in the Archives</h3>
-          <p class="project-desc">A gripping true crime series that uncovers forgotten cases through raw, unfiltered local news archives that tell the story themselves.</p>
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-1" data-vimeo-id="563881269" data-title="Mountain Strong">
+      <div class="project-card reveal reveal-delay-1" data-vimeo-id="563881269" data-title="Mountain Strong" data-desc="An intimate look at one of California's largest wildfires, following the first responders who put everything on the line and the families working to rebuild their lives.">
         <div class="thumb-placeholder">Mountain Strong</div>
         <img class="thumb" src="https://img.youtube.com/vi/IJordrkQaWM/hqdefault.jpg"
           onerror="this.style.display='none';" alt="Mountain Strong">
         <div class="play-btn"></div>
         <div class="project-overlay-grad"></div>
         <div class="project-info">
-          <div class="project-tags">
-            <span class="project-tag">Documentary</span>
-            <span class="project-tag">NatGeo</span>
-          </div>
           <h3 class="project-title">Mountain Strong</h3>
-          <p class="project-desc">An intimate look at one of California's largest wildfires, following the first responders who put everything on the line and the families working to rebuild their lives.</p>
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-2" data-vimeo-id="767671028" data-title="A Critical State of Mind">
+      <div class="project-card reveal reveal-delay-2" data-vimeo-id="767671028" data-title="A Critical State of Mind" data-desc="An unflinching look at the mental health crisis—through the people living it.">
         <div class="thumb-placeholder">A Critical State of Mind</div>
         <img class="thumb" src="https://vumbnail.com/767671028.jpg"
           onerror="this.style.display='none';" alt="A Critical State of Mind">
         <div class="play-btn"></div>
         <div class="project-overlay-grad"></div>
         <div class="project-info">
-          <div class="project-tags">
-            <span class="project-tag">Mental Health</span>
-            <span class="project-tag">Documentary</span>
-          </div>
           <h3 class="project-title">A Critical State of Mind</h3>
-          <p class="project-desc">An unflinching look at the mental health crisis—through the people living it.</p>
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-3" data-vimeo-id="871519433" data-title="Feast or Famine: California's Water Crisis">
-        <div class="thumb-placeholder">Nicholson Hat Company</div>
+      <div class="project-card reveal reveal-delay-3" data-vimeo-id="871519433" data-title="Feast or Famine: California's Water Crisis" data-desc="A deep dive into California's water crisis, where years of drought collide with historic flooding, revealing the fragile balance shaping the state's future.">
+        <div class="thumb-placeholder">Feast or Famine</div>
         <img class="thumb" src="https://vumbnail.com/871519433.jpg"
-          onerror="this.style.display='none';" alt="Nicholson Hat Company">
+          onerror="this.style.display='none';" alt="Feast or Famine: California's Water Crisis">
         <div class="play-btn"></div>
         <div class="project-overlay-grad"></div>
         <div class="project-info">
-          <div class="project-tags">
-            <span class="project-tag">Documentary</span>
-          </div>
           <h3 class="project-title">Feast or Famine: California's Water Crisis</h3>
-          <p class="project-desc">A deep dive into California's water crisis, where years of drought collide with historic flooding, revealing the fragile balance shaping the state's future.</p>
         </div>
       </div>
 
@@ -1065,6 +1042,7 @@ footer p {
   <div class="lightbox-close" id="lightbox-close"></div>
   <div class="lightbox-bottom">
     <div class="lightbox-title" id="lightbox-title"></div>
+    <p class="lightbox-desc" id="lightbox-desc"></p>
   </div>
 </div>
 
@@ -1165,6 +1143,7 @@ const lightbox = document.getElementById('lightbox');
 const lightboxInner = document.getElementById('lightbox-inner');
 const lightboxClose = document.getElementById('lightbox-close');
 const lightboxTitle = document.getElementById('lightbox-title');
+const lightboxDesc = document.getElementById('lightbox-desc');
 
 function openLightbox(videoId, title) {
   lightboxTitle.textContent = title;
@@ -1190,17 +1169,18 @@ function closeLightbox() {
 
 document.querySelectorAll('[data-video-id], [data-vimeo-id]').forEach(card => {
   card.addEventListener('click', () => {
+    const desc = card.dataset.desc || '';
     if (card.dataset.vimeoId) {
       lightboxTitle.textContent = card.dataset.title;
+      lightboxDesc.textContent = desc;
       lightboxInner.innerHTML = `<iframe
         src="https://player.vimeo.com/video/${card.dataset.vimeoId}?autoplay=1&app_id=58479"
         frameborder="0"
         allow="autoplay; fullscreen; picture-in-picture"
         allowfullscreen></iframe>`;
-      const fallback = document.getElementById('lightbox-fallback');
-      if (fallback) fallback.href = `https://vimeo.com/${card.dataset.vimeoId}`;
     } else {
       openLightbox(card.dataset.videoId, card.dataset.title);
+      lightboxDesc.textContent = desc;
     }
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
