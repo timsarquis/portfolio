@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="A project-detail page for Killer High: The Series by Emmy Award-winning filmmaker Tim Sarquis." />
+<meta property="og:title" content="Killer High: The Series - Tim Sarquis" />
+<meta property="og:description" content="The story, production, and impact behind Killer High: The Series." />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://img.youtube.com/vi/EMkl0iYqA7o/maxresdefault.jpg" />
+<title>Killer High: The Series - Tim Sarquis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #090909;
+  --surface: #111111;
+  --surface2: #161616;
+  --border: rgba(255,255,255,0.08);
+  --white: #F0EBE1;
+  --muted: rgba(240,235,225,0.56);
+  --dim: rgba(240,235,225,0.28);
+  --gold: #C9A84C;
+  --gold-dim: rgba(201,168,76,0.64);
+  --ff-display: 'Cormorant Garamond', Georgia, serif;
+  --ff-ui: 'Barlow', sans-serif;
+  --ff-cond: 'Barlow Condensed', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--ff-ui);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+.page-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 3.5rem;
+  background: rgba(9,9,9,0.74);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+}
+.nav-mark,
+.nav-link {
+  font-family: var(--ff-cond);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-mark { color: var(--white); }
+.nav-link { color: var(--muted); transition: color 0.2s; }
+.nav-link:hover { color: var(--white); }
+.case-hero {
+  --hero-parallax-y: 0px;
+  --hero-content-y: 0px;
+  min-height: 96svh;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 9rem 3.5rem 5rem;
+  overflow: hidden;
+  background: #000;
+}
+.case-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    url('killer-high-hero.jpg'),
+    url('https://img.youtube.com/vi/EMkl0iYqA7o/maxresdefault.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.62) saturate(0.72);
+  transform: translate3d(0, var(--hero-parallax-y), 0) scale(1.16);
+  will-change: transform;
+}
+.case-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 30%, rgba(9,9,9,0.68) 100%),
+    linear-gradient(to bottom, rgba(9,9,9,0.25) 0%, rgba(9,9,9,0.15) 35%, rgba(9,9,9,1) 100%);
+}
+.case-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  transform: translate3d(0, var(--hero-content-y), 0);
+  will-change: transform;
+}
+.eyebrow,
+.section-label {
+  font-family: var(--ff-cond);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+.case-title {
+  margin-top: 1.3rem;
+  font-family: var(--ff-display);
+  font-size: clamp(4.4rem, 10vw, 10rem);
+  font-weight: 300;
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  max-width: 1050px;
+}
+.case-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+.case-logline {
+  margin-top: 2rem;
+  max-width: 680px;
+  color: rgba(240,235,225,0.72);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.75;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.watch-btn,
+.outline-link {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(240,235,225,0.2);
+  padding: 0.85rem 1.1rem;
+  font-family: var(--ff-cond);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--white);
+  background: rgba(9,9,9,0.28);
+  cursor: pointer;
+}
+.watch-btn::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid var(--gold);
+  margin-right: 0.65rem;
+}
+.outline-link { color: var(--muted); }
+.section {
+  padding: 7rem 3.5rem;
+  border-top: 1px solid var(--border);
+}
+.section-inner {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.fact {
+  min-height: 140px;
+  padding: 1.4rem;
+  background: var(--surface);
+}
+.fact span {
+  display: block;
+  font-family: var(--ff-cond);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.fact strong {
+  display: block;
+  margin-top: 1.2rem;
+  font-family: var(--ff-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1;
+}
+.story-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.5fr;
+  gap: 7rem;
+  align-items: start;
+}
+.sticky-label {
+  position: sticky;
+  top: 7rem;
+}
+.section-title {
+  margin-top: 1rem;
+  font-family: var(--ff-display);
+  font-size: clamp(2.7rem, 5vw, 5.5rem);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+.section-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+.body-copy p {
+  color: rgba(240,235,225,0.68);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.9;
+  margin-bottom: 1.55rem;
+}
+.body-copy p:last-child { margin-bottom: 0; }
+.watch-frame {
+  aspect-ratio: 16/9;
+  width: 100%;
+  background: var(--surface2);
+}
+.watch-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.frames-layout {
+  display: grid;
+  gap: 2rem;
+}
+.frame-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.frame-item,
+.bts-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface2);
+}
+.frame-item {
+  aspect-ratio: 16/9;
+}
+.frame-item img,
+.bts-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.bts-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 1.5rem;
+  align-items: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.bts-item.portrait {
+  aspect-ratio: 3/4;
+}
+.bts-item.landscape {
+  aspect-ratio: 16/9;
+}
+.caption {
+  margin-top: 1rem;
+  color: var(--dim);
+  font-family: var(--ff-cond);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.next-project {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: end;
+}
+.next-project h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(3.2rem, 7vw, 7rem);
+  font-weight: 300;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+.next-project-title {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+.next-project-title:hover,
+.next-project-title:focus-visible {
+  color: var(--gold);
+}
+.footer {
+  padding: 2rem 3.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  color: rgba(240,235,225,0.24);
+  font-family: var(--ff-cond);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(9,9,9,0.96);
+}
+.lightbox.open { display: flex; }
+.lightbox-inner {
+  width: min(92vw, 1120px);
+  aspect-ratio: 16/9;
+}
+.lightbox-inner iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.lightbox-close::before,
+.lightbox-close::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 10px;
+  width: 24px;
+  height: 1px;
+  background: var(--white);
+}
+.lightbox-close::before { transform: rotate(45deg); }
+.lightbox-close::after { transform: rotate(-45deg); }
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 900px) {
+  .page-nav { padding: 1rem 1.5rem; }
+  .case-hero { min-height: 88svh; padding: 7.5rem 1.5rem 3.5rem; }
+  .section { padding: 5rem 1.5rem; }
+  .facts,
+  .story-grid,
+  .frame-grid,
+  .next-project {
+    grid-template-columns: 1fr;
+  }
+  .facts {
+    gap: 0;
+    background: transparent;
+    border-left: 0;
+    border-right: 0;
+  }
+  .fact {
+    min-height: 0;
+    padding: 1.15rem 0;
+    display: grid;
+    grid-template-columns: minmax(5.5rem, 32%) 1fr;
+    gap: 1rem;
+    align-items: baseline;
+    background: transparent;
+    border-bottom: 1px solid var(--border);
+  }
+  .fact:last-child { border-bottom: 0; }
+  .fact span {
+    font-size: 0.58rem;
+    line-height: 1.2;
+  }
+  .fact strong {
+    margin-top: 0;
+    font-size: 1.35rem;
+    line-height: 1.18;
+  }
+  .sticky-label { position: static; }
+  .frame-item { aspect-ratio: 16/10; }
+  .bts-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+  }
+  .footer {
+    padding: 1.5rem;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+<nav class="page-nav">
+  <a href="index.html#portfolio" class="nav-mark">Tim Sarquis</a>
+  <a href="index.html#portfolio" class="nav-link">Back to Work</a>
+</nav>
+
+<main>
+  <section class="case-hero">
+    <div class="case-hero-inner reveal">
+      <p class="eyebrow">Project Detail · Documentary Series</p>
+      <h1 class="case-title">Killer High:<br><em>The Series</em></h1>
+      <p class="case-logline">An award-winning series exposing the fentanyl crisis through intimate stories of loss, addiction, and hope.</p>
+      <div class="hero-actions">
+        <button class="watch-btn" type="button" data-open-video>Watch Film</button>
+        <a class="outline-link" href="#breakdown">Read Breakdown</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="facts reveal">
+        <div class="fact">
+          <span>Role</span>
+          <strong>Producer / DP / Editor</strong>
+        </div>
+        <div class="fact">
+          <span>Format</span>
+          <strong>Doc Series</strong>
+        </div>
+        <div class="fact">
+          <span>Subject</span>
+          <strong>Fentanyl Crisis</strong>
+        </div>
+        <div class="fact">
+          <span>Distribution</span>
+          <strong>Local / ABC News Live / Disney+ & Hulu</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="breakdown">
+    <div class="section-inner story-grid">
+      <div class="sticky-label reveal">
+        <p class="section-label">The Story</p>
+        <h2 class="section-title">A crisis told through <em>people.</em></h2>
+      </div>
+      <div class="body-copy reveal">
+        <p>Killer High: The Series was created as a continuation of Killer High: The Silent Crisis, our 2021 documentary on the growing fentanyl epidemic in Central California. Rather than focusing on statistics and headlines, we committed to telling the human stories behind the crisis, following families affected by loss, individuals battling addiction and recovery, and community members working toward solutions. By staying with these stories over time, we showed how fentanyl was impacting lives long after the news cycle moved on.</p>
+        <p>To do that, we built a 12-month investigative reporting project instead of a traditional one-off documentary. Each month, we produced a new long-form installment that explored a different aspect of the crisis, from prevention and treatment to recovery, enforcement, and emerging medical research. The stories aired in ABC30 Action News' most-watched newscasts before being compiled into two half-hour specials. The series also expanded beyond the local market through national distribution on ABC News Live and Hulu via Disney+, bringing a community-focused investigation to audiences across the country.</p>
+        <p>The project earned the NAB Service to America Award and a Regional Edward R. Murrow Award for its journalism and public service impact. More importantly, it helped spark conversations in homes, schools, and communities throughout the region. Since the launch of the series, fentanyl-related overdose deaths in the area have declined by 42%, demonstrating the potential for sustained, solutions-focused storytelling to create meaningful community impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner reveal">
+      <p class="section-label">Watch</p>
+      <div class="watch-frame">
+        <iframe src="https://player.vimeo.com/video/1184488286?app_id=58479" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner reveal">
+      <p class="section-label">Frames / Behind the Scenes</p>
+      <div class="frames-layout">
+        <div class="frame-grid">
+          <div class="frame-item">
+            <img src="killer-high-frame-01.jpg" alt="Killer High frame 01">
+          </div>
+          <div class="frame-item">
+            <img src="killer-high-frame-02.jpg" alt="Killer High frame 02">
+          </div>
+          <div class="frame-item">
+            <img src="killer-high-frame-03.JPG" alt="Killer High frame 03">
+          </div>
+          <div class="frame-item">
+            <img src="killer-high-frame-04.png" alt="Killer High frame 04">
+          </div>
+        </div>
+        <div class="bts-grid">
+          <div class="bts-item portrait">
+            <img src="killer-high-bts-01.jpg" alt="Behind the scenes on Killer High">
+          </div>
+          <div class="bts-item landscape">
+            <img src="killer-high-bts-02.jpg" alt="Behind the scenes on Killer High">
+          </div>
+        </div>
+      </div>
+      <p class="caption">Selected frames and behind-the-scenes images from the production.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner next-project reveal">
+      <div>
+        <p class="section-label">Next</p>
+        <h2><a class="next-project-title" href="project-evil-in-the-archives.html">Evil in the Archives</a></h2>
+      </div>
+      <a class="outline-link" href="index.html#portfolio">Back to Work</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© 2026 Tim Sarquis</p>
+  <p>Killer High: The Series</p>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" type="button" id="lightbox-close" aria-label="Close video"></button>
+  <div class="lightbox-inner" id="lightbox-inner"></div>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const hero = document.querySelector('.case-hero');
+let ticking = false;
+
+function updateHeroParallax() {
+  if (!hero) return;
+  const heroRect = hero.getBoundingClientRect();
+  const scrollProgress = Math.min(Math.max(-heroRect.top / hero.offsetHeight, 0), 1);
+  hero.style.setProperty('--hero-parallax-y', `${scrollProgress * 180}px`);
+  hero.style.setProperty('--hero-content-y', `${scrollProgress * -48}px`);
+  ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(updateHeroParallax);
+    ticking = true;
+  }
+}, { passive: true });
+updateHeroParallax();
+
+const lightbox = document.getElementById('lightbox');
+const lightboxInner = document.getElementById('lightbox-inner');
+const closeBtn = document.getElementById('lightbox-close');
+
+function openVideo() {
+  lightboxInner.innerHTML = '<iframe src="https://player.vimeo.com/video/1184488286?autoplay=1&app_id=58479" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideo() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { lightboxInner.innerHTML = ''; }, 200);
+}
+
+document.querySelector('[data-open-video]').addEventListener('click', openVideo);
+closeBtn.addEventListener('click', closeVideo);
+lightbox.addEventListener('click', (event) => {
+  if (event.target === lightbox) closeVideo();
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeVideo();
+});
+</script>
+</body>
+</html>

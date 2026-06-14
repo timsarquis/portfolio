@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Tim Sarquis is an Emmy Award-winning executive producer, filmmaker, editor, and cinematographer creating grounded human stories for broadcast and streaming." />
+<meta property="og:title" content="Tim Sarquis - Filmmaker, EP, Cinematographer" />
+<meta property="og:description" content="Selected documentary, series, and longform work from Emmy Award-winning filmmaker Tim Sarquis." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="howie-gradient.jpg" />
 <title>Tim Sarquis — Filmmaker · EP · Cinematographer</title>
 <template id="__bundler_thumbnail" data-bg-color="#090909">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -120,8 +125,8 @@ nav.scrolled .nav-logo { opacity: 1; }
   z-index: 1;
 }
 
-/* placeholder — shown when video can't load */
-.hero-placeholder {
+/* video fallback */
+.hero-fallback {
   position: absolute;
   inset: 0;
   display: flex;
@@ -140,7 +145,7 @@ nav.scrolled .nav-logo { opacity: 1; }
   text-transform: uppercase;
   color: rgba(255,255,255,0.12);
 }
-.hero-placeholder span {
+.hero-fallback span {
   padding: 0.6rem 1.2rem;
   border: 1px solid rgba(255,255,255,0.08);
 }
@@ -469,8 +474,8 @@ iframe.thumb {
   filter: brightness(0.6) saturate(0.5);
 }
 
-/* thumb placeholder */
-.thumb-placeholder {
+/* image fallback */
+.thumb-fallback {
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
@@ -490,41 +495,9 @@ iframe.thumb {
   color: rgba(255,255,255,0.1);
   transition: opacity 0.5s;
 }
-.project-featured:hover .thumb-placeholder,
-.project-card:hover .thumb-placeholder {
+.project-featured:hover .thumb-fallback,
+.project-card:hover .thumb-fallback {
   opacity: 0.6;
-}
-
-/* play button */
-.play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.85);
-  width: 60px;
-  height: 60px;
-  border: 1px solid rgba(240,235,225,0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s, transform 0.3s, border-color 0.3s;
-  z-index: 5;
-}
-.play-btn::after {
-  content: '';
-  width: 0;
-  height: 0;
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  border-left: 16px solid var(--white);
-  margin-left: 3px;
-}
-.project-featured:hover .play-btn,
-.project-card:hover .play-btn {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
 }
 
 .project-overlay-grad {
@@ -583,94 +556,10 @@ iframe.thumb {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* ─────────────────────────────────────────────
-   LIGHTBOX
-───────────────────────────────────────────── */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  background: rgba(9,9,9,0);
-  pointer-events: none;
-  transition: background 0.4s ease;
-  padding: 4rem 2rem 3rem;
-}
-.lightbox.open {
-  background: rgba(9,9,9,0.95);
-  pointer-events: all;
-}
-.lightbox-inner {
-  width: min(90vw, 1100px);
-  aspect-ratio: 16/9;
-  opacity: 0;
-  transform: scale(0.96);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  flex-shrink: 0;
-}
-.lightbox.open .lightbox-inner {
-  opacity: 1;
-  transform: scale(1);
-}
-.lightbox-inner iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-.lightbox-close {
-  position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-  width: 44px;
-  height: 44px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.4s 0.1s;
-}
-.lightbox.open .lightbox-close { opacity: 1; }
-.lightbox-close::before,
-.lightbox-close::after {
-  content: '';
-  position: absolute;
-  width: 22px;
-  height: 1px;
-  background: var(--white);
-}
-.lightbox-close::before { transform: rotate(45deg); }
-.lightbox-close::after { transform: rotate(-45deg); }
-.lightbox-bottom {
-  width: min(90vw, 1100px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  opacity: 0;
-  transition: opacity 0.4s 0.15s;
-  text-align: center;
-}
-.lightbox.open .lightbox-bottom { opacity: 1; }
-.lightbox-title {
-  font-family: var(--ff-display);
-  font-size: 1.4rem;
-  font-weight: 300;
-  color: var(--muted);
-}
-.lightbox-desc {
-  font-family: var(--ff-ui);
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: rgba(240,235,225,0.4);
-  line-height: 1.6;
-  max-width: 600px;
+.project-featured:focus-visible,
+.project-card:focus-visible {
+  outline: 1px solid var(--gold-dim);
+  outline-offset: 4px;
 }
 
 /* ─────────────────────────────────────────────
@@ -844,6 +733,11 @@ footer p {
   #portfolio { padding: 6rem 1.75rem; }
   .project-grid { grid-template-columns: 1fr; }
   .project-featured { aspect-ratio: 16/9; }
+  .project-info { padding: 1.4rem; }
+  .project-desc {
+    opacity: 1;
+    transform: none;
+  }
   #contact { padding: 6rem 1.75rem; }
   .contact-row { flex-direction: column; align-items: flex-start; }
   footer { padding: 1.5rem 1.75rem; flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -946,65 +840,66 @@ footer p {
     <h2 class="portfolio-headline reveal">Stories that<br><em>don't let go.</em></h2>
 
     <!-- Featured project -->
-    <div class="project-featured reveal" data-vimeo-id="1184488286" data-title="Killer High: The Series" data-desc="Award winning series that exposes the fentanyl crisis through real stories of loss, addiction, and hope for recovery.">
-      <div class="thumb-placeholder">Killer High: The Series</div>
-      <img class="thumb" src="https://img.youtube.com/vi/EMkl0iYqA7o/maxresdefault.jpg"
+    <div class="project-featured reveal" data-project-url="project-killer-high.html" tabindex="0" role="link" aria-label="Open Killer High: The Series project details">
+      <div class="thumb-fallback">Killer High: The Series</div>
+      <img class="thumb" src="killer-high-thumb.png"
         onerror="this.style.display='none';" alt="Killer High: The Series">
-      <div class="play-btn"></div>
       <div class="project-overlay-grad"></div>
       <div class="project-info">
         <h3 class="project-title">Killer High: The Series</h3>
+        <p class="project-desc">Real stories of loss, addiction, and recovery inside the fentanyl crisis.</p>
       </div>
     </div>
 
     <!-- Grid -->
     <div class="project-grid">
 
-      <div class="project-card reveal" data-vimeo-id="1184489402" data-title="Evil in the Archives" data-desc="A gripping true crime series that uncovers forgotten cases through raw, unfiltered local news archives that tell the story themselves.">
-        <div class="thumb-placeholder">Evil in the Archives</div>
+      <div class="project-card reveal" data-project-url="project-evil-in-the-archives.html" tabindex="0" role="link" aria-label="Open Evil in the Archives project details">
+        <div class="thumb-fallback">Evil in the Archives</div>
         <img class="thumb" src="https://vumbnail.com/1184489402.jpg"
           onerror="this.style.display='none';" alt="Evil in the Archives">
-        <div class="play-btn"></div>
         <div class="project-overlay-grad"></div>
         <div class="project-info">
           <h3 class="project-title">Evil in the Archives</h3>
+          <p class="project-desc">Forgotten cases told through raw local news archives.</p>
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-1" data-vimeo-id="563881269" data-title="Mountain Strong" data-desc="An intimate look at one of California's largest wildfires, following the first responders who put everything on the line and the families working to rebuild their lives.">
-        <div class="thumb-placeholder">Mountain Strong</div>
+      <div class="project-card reveal reveal-delay-1" data-project-url="project-mountain-strong.html" tabindex="0" role="link" aria-label="Open Mountain Strong: Surviving the Creek Fire project details">
+        <div class="thumb-fallback">Mountain Strong: Surviving the Creek Fire</div>
         <img class="thumb" src="https://img.youtube.com/vi/IJordrkQaWM/hqdefault.jpg"
-          onerror="this.style.display='none';" alt="Mountain Strong">
-        <div class="play-btn"></div>
+          onerror="this.style.display='none';" alt="Mountain Strong: Surviving the Creek Fire">
         <div class="project-overlay-grad"></div>
         <div class="project-info">
-          <h3 class="project-title">Mountain Strong</h3>
+          <h3 class="project-title">Mountain Strong: Surviving the Creek Fire</h3>
+          <p class="project-desc">A wildfire story about first responders, families, and rebuilding.</p>
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-2" data-vimeo-id="767671028" data-title="A Critical State of Mind" data-desc="An unflinching look at the mental health crisis—through the people living it.">
-        <div class="thumb-placeholder">A Critical State of Mind</div>
+      <div class="project-card reveal reveal-delay-2" data-project-url="project-critical-state-of-mind.html" tabindex="0" role="link" aria-label="Open A Critical State of Mind project details">
+        <div class="thumb-fallback">A Critical State of Mind</div>
         <img class="thumb" src="https://vumbnail.com/767671028.jpg"
           onerror="this.style.display='none';" alt="A Critical State of Mind">
-        <div class="play-btn"></div>
         <div class="project-overlay-grad"></div>
         <div class="project-info">
           <h3 class="project-title">A Critical State of Mind</h3>
+          <p class="project-desc">An unflinching look at the mental health crisis through lived experience.</p>
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-3" data-vimeo-id="871519433" data-title="Feast or Famine: California's Water Crisis" data-desc="A deep dive into California's water crisis, where years of drought collide with historic flooding, revealing the fragile balance shaping the state's future.">
-        <div class="thumb-placeholder">Feast or Famine</div>
+      <div class="project-card reveal reveal-delay-3" data-project-url="project-feast-or-famine.html" tabindex="0" role="link" aria-label="Open Feast or Famine: California's Water Crisis project details">
+        <div class="thumb-fallback">Feast or Famine: California's Water Crisis</div>
         <img class="thumb" src="https://vumbnail.com/871519433.jpg"
           onerror="this.style.display='none';" alt="Feast or Famine: California's Water Crisis">
-        <div class="play-btn"></div>
         <div class="project-overlay-grad"></div>
         <div class="project-info">
           <h3 class="project-title">Feast or Famine: California's Water Crisis</h3>
+          <p class="project-desc">Drought, flooding, and the fragile balance shaping California's future.</p>
         </div>
       </div>
 
     </div><!-- /project-grid -->
+
   </div>
 </section>
 
@@ -1035,16 +930,6 @@ footer p {
   <p>© 2026 Tim Sarquis</p>
   <p>Emmy Award-Winning EP · ABC Owned Television Stations</p>
 </footer>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner" id="lightbox-inner"></div>
-  <div class="lightbox-close" id="lightbox-close"></div>
-  <div class="lightbox-bottom">
-    <div class="lightbox-title" id="lightbox-title"></div>
-    <p class="lightbox-desc" id="lightbox-desc"></p>
-  </div>
-</div>
 
 <!-- TWEAKS PANEL -->
 <div id="tweaks-panel">
@@ -1138,60 +1023,19 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── LIGHTBOX ──────────────────────────────────────────────
-const lightbox = document.getElementById('lightbox');
-const lightboxInner = document.getElementById('lightbox-inner');
-const lightboxClose = document.getElementById('lightbox-close');
-const lightboxTitle = document.getElementById('lightbox-title');
-const lightboxDesc = document.getElementById('lightbox-desc');
+// ── PROJECT LINKS ─────────────────────────────────────────
+document.querySelectorAll('[data-project-url]').forEach(card => {
+  const openProject = () => {
+    window.location.href = card.dataset.projectUrl;
+  };
 
-function openLightbox(videoId, title) {
-  lightboxTitle.textContent = title;
-  lightboxInner.innerHTML = `<iframe
-    src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&color=white"
-    allow="autoplay; fullscreen; picture-in-picture"
-    allowfullscreen
-    referrerpolicy="no-referrer"
-    sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"></iframe>`;
-  lightbox.classList.add('open');
-  document.body.style.overflow = 'hidden';
-
-  // Fallback link in case embed is blocked
-  const fallback = document.getElementById('lightbox-fallback');
-  if (fallback) fallback.href = `https://www.youtube.com/watch?v=${videoId}`;
-}
-
-function closeLightbox() {
-  lightbox.classList.remove('open');
-  document.body.style.overflow = '';
-  setTimeout(() => { lightboxInner.innerHTML = ''; }, 400);
-}
-
-document.querySelectorAll('[data-video-id], [data-vimeo-id]').forEach(card => {
-  card.addEventListener('click', () => {
-    const desc = card.dataset.desc || '';
-    if (card.dataset.vimeoId) {
-      lightboxTitle.textContent = card.dataset.title;
-      lightboxDesc.textContent = desc;
-      lightboxInner.innerHTML = `<iframe
-        src="https://player.vimeo.com/video/${card.dataset.vimeoId}?autoplay=1&app_id=58479"
-        frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen></iframe>`;
-    } else {
-      openLightbox(card.dataset.videoId, card.dataset.title);
-      lightboxDesc.textContent = desc;
+  card.addEventListener('click', openProject);
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openProject();
     }
-    lightbox.classList.add('open');
-    document.body.style.overflow = 'hidden';
   });
-});
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => {
-  if (e.target === lightbox) closeLightbox();
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLightbox();
 });
 
 // ── TWEAKS ────────────────────────────────────────────────
