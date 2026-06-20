@@ -238,6 +238,18 @@ a { color: inherit; }
   border: 0;
   display: block;
 }
+.watch-series-link {
+  margin-top: 1.25rem;
+  border-color: rgba(201, 168, 76, 0.55);
+  color: var(--white);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.watch-series-link:hover,
+.watch-series-link:focus-visible {
+  color: var(--black);
+  background: var(--gold);
+  border-color: var(--gold);
+}
 .frames-layout {
   display: grid;
   gap: 2rem;
@@ -481,6 +493,7 @@ a { color: inherit; }
       <div class="watch-frame">
         <iframe src="https://player.vimeo.com/video/1184489402?app_id=58479" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
       </div>
+      <a class="outline-link watch-series-link" href="https://www.disneyplus.com/browse/entity-8ad28695-09c0-48cf-a3e6-7e54989a35f1" target="_blank" rel="noopener noreferrer">Watch Full Series</a>
     </div>
   </section>
 
