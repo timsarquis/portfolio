@@ -7,8 +7,9 @@
 <meta property="og:title" content="Killer High: The Series - Tim Sarquis" />
 <meta property="og:description" content="The story, production, and impact behind Killer High: The Series." />
 <meta property="og:type" content="article" />
-<meta property="og:image" content="https://img.youtube.com/vi/EMkl0iYqA7o/maxresdefault.jpg" />
+<meta property="og:image" content="killer-high-hero.jpg" />
 <title>Killer High: The Series - Tim Sarquis</title>
+<link rel="preload" as="image" href="killer-high-hero.jpg" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -74,9 +75,7 @@ a { color: inherit; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    url('killer-high-hero.jpg'),
-    url('https://img.youtube.com/vi/EMkl0iYqA7o/maxresdefault.jpg');
+  background-image: url('killer-high-hero.jpg');
   background-size: cover;
   background-position: center;
   filter: brightness(0.62) saturate(0.72);
@@ -491,9 +490,9 @@ a { color: inherit; }
     <div class="section-inner reveal">
       <p class="section-label">Watch</p>
       <div class="watch-frame">
-        <iframe src="https://player.vimeo.com/video/1184488286?app_id=58479" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://player.vimeo.com/video/1209669159?app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
       </div>
-      <a class="outline-link watch-series-link" href="https://youtube.com/playlist?list=PLEc4V32SJFyBCY5C0j3b0HGAATw8_wnsI&amp;si=qXDuyfWf5UgUy4yY" target="_blank" rel="noopener noreferrer">Watch Full Series</a>
+      <a class="outline-link watch-series-link" href="https://www.hulu.com/series/d58cd07b-567c-4e28-b04d-f6f8af7fabf3" target="_blank" rel="noopener noreferrer">Watch Full Series</a>
     </div>
   </section>
 
@@ -585,7 +584,7 @@ const lightboxInner = document.getElementById('lightbox-inner');
 const closeBtn = document.getElementById('lightbox-close');
 
 function openVideo() {
-  lightboxInner.innerHTML = '<iframe src="https://player.vimeo.com/video/1184488286?autoplay=1&app_id=58479" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+  lightboxInner.innerHTML = '<iframe src="https://player.vimeo.com/video/1209669159?autoplay=1&app_id=58479" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
   lightbox.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
