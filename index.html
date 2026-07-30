@@ -746,6 +746,25 @@ footer p {
   .nav-links { gap: 1.8rem; }
 }
 
+@media (max-width: 640px) {
+  nav,
+  nav.scrolled {
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .nav-logo { display: none; }
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .nav-links a {
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -757,6 +776,7 @@ footer p {
     <a href="#about">About</a>
     <a href="#portfolio">Work</a>
     <a href="#contact">Contact</a>
+    <a href="projectintake/" data-local-href="projectintake/index.html">Project InTake</a>
   </div>
 </nav>
 
@@ -1037,6 +1057,12 @@ document.querySelectorAll('[data-project-url]').forEach(card => {
     }
   });
 });
+
+if (window.location.protocol === 'file:') {
+  document.querySelectorAll('[data-local-href]').forEach(link => {
+    link.href = link.dataset.localHref;
+  });
+}
 
 // ── TWEAKS ────────────────────────────────────────────────
 const tweaksPanel = document.getElementById('tweaks-panel');
