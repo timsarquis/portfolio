@@ -12,11 +12,14 @@ The final structure should look like:
   index.html
   styles.css
   /assets/
+  /downloads/
 ```
 
 Keep the folder name and internal structure unchanged. The page uses relative
 asset paths and requires no package installation, JavaScript framework, or
 build command.
+
+The Lite `.ccx` release is served directly from the `downloads` folder.
 
 If the portfolio is hosted by a framework, copy this folder into its static or
 public directory so that `projectintake/index.html` is served at:
