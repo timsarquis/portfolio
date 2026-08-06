@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 726.19 605.49">
+  <!-- Generator: Adobe Illustrator 30.6.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 109)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st1 {
+        fill: url(#radial-gradient);
+      }
+
+      .st2 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="136.18" cy="48.86" fx="136.18" fy="48.86" r="596.12" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9f95fc"/>
+      <stop offset="1" stop-color="#3d35fc"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient" x1="-21.82" y1="285.59" x2="345.68" y2="297.7" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e1e2ee"/>
+      <stop offset="1" stop-color="#9f95fc"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="-25.01" y1="382.5" x2="342.48" y2="394.61" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e1e2ee"/>
+      <stop offset="1" stop-color="#9f95fc"/>
+    </linearGradient>
+  </defs>
+  <path class="st1" d="M65.8,195.59V62.35S76.9,0,140.96,0h163.98s17.91,2.87,27.33,10.05,28.72,35.9,28.72,35.9l27.37,43.53s6.73,8.32,21.54,8.32h248.14c26.7,0,67.76,25.45,67.76,68.86.9,53.85,0,346.86,0,361.21s-6.28,67.76-65.51,77.63H129.45c-23.69,0-48.01-21.09-56.99-48.01-8.97-26.92-6.67-78.97-6.67-78.97,0,0,1.73-8.08,5.32-8.08h49.81s8.97-.45,8.97,9.87v38.14s1.79,18.85,36.35,18.85h470.7s22.88,3.59,22.88-26.47V190.43s2.69-22.88-25.13-22.88h-246.79s-26.92,3.59-52.5-36.35c-25.58-39.94-27.54-46.39-35.45-54.29s-13.35-9.42-26.47-9.42h-125.64s-17.05-.9-17.05,25.58v104.2c0,5.81-1.41,13.36-10.32,13.36h-44.42c-8.22,0-10.26-2.91-10.26-15.04Z"/>
+  <rect class="st2" x="48.24" y="272.1" width="375.57" height="43.97" rx="21.99" ry="21.99"/>
+  <rect class="st0" x="0" y="366.33" width="302.87" height="43.97" rx="21.99" ry="21.99"/>
+</svg>
