@@ -405,6 +405,153 @@ nav.scrolled .nav-logo { opacity: 1; }
 .about-bio p:last-child { margin-bottom: 0; }
 
 /* ─────────────────────────────────────────────
+   TESTIMONIALS
+───────────────────────────────────────────── */
+#testimonials {
+  padding: 8rem 3.5rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.testimonials-inner { max-width: 1200px; margin: 0 auto; }
+.testimonials-intro {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 7rem;
+  align-items: end;
+  margin-bottom: 5rem;
+}
+.testimonials-intro .section-label { margin-bottom: 0; }
+.testimonials-heading {
+  font-family: var(--ff-display);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+.testimonials-heading em { color: var(--gold); font-style: italic; }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+.testimonial {
+  position: relative;
+}
+.testimonial-card {
+  position: relative;
+  min-height: 230px;
+  padding: 2.5rem 2.25rem 1.8rem;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.testimonial:hover .testimonial-card,
+.testimonial:focus-within .testimonial-card {
+  border-color: rgba(201,168,76,0.34);
+  background: #191919;
+}
+.testimonial-quote {
+  font-family: var(--ff-display);
+  font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+  font-weight: 300;
+  line-height: 1.45;
+  color: rgba(240,235,225,0.88);
+}
+.testimonial-excerpt {
+  display: block;
+}
+.testimonial-full-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease;
+}
+.testimonial-full { overflow: hidden; }
+.testimonial.is-expanded .testimonial-excerpt { display: none; }
+.testimonial.is-expanded .testimonial-full-wrap {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+}
+.testimonial-person { margin-top: 1.7rem; }
+.testimonial-name {
+  font-family: var(--ff-cond);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.testimonial-role {
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.testimonial-previous-role {
+  margin-top: 0.45rem;
+  font-family: var(--ff-cond);
+  font-size: 0.62rem;
+  font-weight: 300;
+  line-height: 1.45;
+  letter-spacing: 0.08em;
+  color: rgba(240,235,225,0.28);
+}
+.testimonial-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.4rem;
+  font-family: var(--ff-cond);
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+.testimonial-action::after {
+  content: '+';
+  font-family: var(--ff-ui);
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: transform 0.35s ease;
+}
+.testimonial.is-expanded .testimonial-action::after { transform: rotate(45deg); }
+.testimonial-toggle {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.testimonial-toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 5px;
+}
+.testimonials-more-wrap { margin-top: 2.5rem; text-align: center; }
+.testimonials-more {
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  padding: 0 0 0.4rem;
+  background: transparent;
+  font-family: var(--ff-cond);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.25s, border-color 0.25s;
+}
+.testimonials-more:hover { color: var(--white); border-color: var(--gold-dim); }
+.testimonials-more:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+.testimonial[hidden] { display: none; }
+
+/* ─────────────────────────────────────────────
    PORTFOLIO
 ───────────────────────────────────────────── */
 #portfolio {
@@ -730,6 +877,9 @@ footer p {
   .about-inner { grid-template-columns: 1fr; gap: 4rem; }
   .about-left { position: static; width: 100%; max-width: 100%; display: flex; flex-direction: column; align-items: center; }
   .about-photo-wrap { max-width: 260px; }
+  #testimonials { padding: 6rem 1.75rem; }
+  .testimonials-intro { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 4rem; }
+  .testimonials-grid { grid-template-columns: 1fr; }
   #portfolio { padding: 6rem 1.75rem; }
   .project-grid { grid-template-columns: 1fr; }
   .project-featured { aspect-ratio: 16/9; }
@@ -762,6 +912,20 @@ footer p {
   .nav-links a {
     font-size: 0.64rem;
     letter-spacing: 0.12em;
+  }
+  .testimonial-card {
+    min-height: 0;
+    padding: 2.25rem 1.4rem 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -853,6 +1017,23 @@ footer p {
   </div>
 </section>
 
+<!-- TESTIMONIALS — content is managed in testimonials.js -->
+<section id="testimonials" aria-labelledby="testimonials-heading">
+  <div class="testimonials-inner">
+    <div class="testimonials-intro">
+      <p class="section-label reveal">In collaboration</p>
+      <h2 class="testimonials-heading reveal reveal-delay-1" id="testimonials-heading">
+        The story is always<br><em>a shared endeavor.</em>
+      </h2>
+    </div>
+    <div class="testimonials-grid" id="testimonials-grid"></div>
+    <div class="testimonials-more-wrap" id="testimonials-more-wrap" hidden>
+      <button class="testimonials-more" id="testimonials-more" type="button" aria-expanded="false" aria-controls="testimonials-grid">More testimonials</button>
+    </div>
+    <noscript><p class="testimonial-role">Enable JavaScript to view testimonials.</p></noscript>
+  </div>
+</section>
+
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="portfolio-inner">
@@ -876,7 +1057,7 @@ footer p {
 
       <div class="project-card reveal" data-project-url="project-evil-in-the-archives.html" tabindex="0" role="link" aria-label="Open Evil in the Archives project details">
         <div class="thumb-fallback">Evil in the Archives</div>
-        <img class="thumb" src="https://vumbnail.com/1184489402.jpg"
+        <img class="thumb" src="evil-in-the-archives-thumb.jpg"
           onerror="this.style.display='none';" alt="Evil in the Archives">
         <div class="project-overlay-grad"></div>
         <div class="project-info">
@@ -898,7 +1079,7 @@ footer p {
 
       <div class="project-card reveal reveal-delay-2" data-project-url="project-critical-state-of-mind.html" tabindex="0" role="link" aria-label="Open A Critical State of Mind project details">
         <div class="thumb-fallback">A Critical State of Mind</div>
-        <img class="thumb" src="https://vumbnail.com/767671028.jpg"
+        <img class="thumb" src="critical-state-of-mind-thumb.jpg"
           onerror="this.style.display='none';" alt="A Critical State of Mind">
         <div class="project-overlay-grad"></div>
         <div class="project-info">
@@ -909,7 +1090,7 @@ footer p {
 
       <div class="project-card reveal reveal-delay-3" data-project-url="project-feast-or-famine.html" tabindex="0" role="link" aria-label="Open Feast or Famine: California's Water Crisis project details">
         <div class="thumb-fallback">Feast or Famine: California's Water Crisis</div>
-        <img class="thumb" src="https://vumbnail.com/871519433.jpg"
+        <img class="thumb" src="feast-or-famine-thumb.jpg"
           onerror="this.style.display='none';" alt="Feast or Famine: California's Water Crisis">
         <div class="project-overlay-grad"></div>
         <div class="project-info">
@@ -1145,5 +1326,6 @@ window.parent.postMessage({ type: '__edit_mode_available' }, '*');
 applyTweaks(tweakState);
 </script>
 <script src="https://player.vimeo.com/api/player.js"></script>
+<script src="testimonials.js"></script>
 </body>
 </html>
