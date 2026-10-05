@@ -20,6 +20,34 @@ const testimonials = [
     previousRole: 'Former Executive Producer, ABC Owned Television Stations',
     previewQuote: '“I always knew if Tim was on the project, it was going to be incredible, regardless of the curveballs thrown our way.”',
     fullQuote: '“Tim is the ultimate pro’s pro. He made every big-time streaming project and series we worked on together at ABC better. As a cinematographer and storyteller, his creative eye and attention to detail are unmatched. I always knew if Tim was on the project, it was going to be incredible, regardless of the curveballs thrown our way. Phenomenal collaborator and yet, somehow, an even better person. Tim’s a unicorn!”'
+  },
+  {
+    name: 'Lisa Smittcamp',
+    role: 'Fresno Co District Attorney',
+    previewQuote: '“Tim is a talented storyteller, a true professional, and someone who genuinely cares about making a difference.”',
+    fullQuote: `“Working with Tim Sarquis on KILLER HIGH was an amazing experience. Tim is not only incredibly skilled at his craft, but he took the time to understand our work in law enforcement and how we could partner to create a message that would truly save lives.
+
+His dedication to this project and commitment to getting the message right were extraordinary. KILLER HIGH helped bring much-needed attention to the devastating impact of fentanyl in our community, and Tim’s work played an important role in the significant decrease of fentanyl-related deaths we experienced in Fresno County.
+
+Tim is a talented storyteller, a true professional, and someone who genuinely cares about making a difference. It was an honor to work with him.”`
+  },
+  {
+    name: 'Shana Druckerman',
+    role: 'Producer, 20/20',
+    company: 'ABC News',
+    previewQuote: '“When Tim says “yes” to a shoot, I know I’m going to get something better than I expected.”',
+    fullQuote: '“Tim is a joy to work with. A multi-hyphenate talent - he brings the perfect blend of sharp editorial instinct and well-rounded technical skill to any project. When Tim says “yes” to a shoot, I know I’m going to get something better than I expected.”'
+  },
+  {
+    name: 'Dean “Dino” Cardinale',
+    role: 'Fresno Police Department',
+    company: 'Assigned to DEA',
+    previewQuote: '“In my experience, few media efforts have had that kind of tangible impact on the ground. … Your work has made a real difference.”',
+    fullQuote: `“I am writing to express my deep appreciation for the powerful work you did in producing the documentary Killer High. As someone who has served with the Fresno Police Department for 30 years and is currently assigned to the DEA, I have witnessed firsthand the devastating toll fentanyl has taken on our communities—particularly on young people.
+
+Your film did more than raise awareness. It cut through the noise with clarity and urgency, helping shift public understanding and contributing to the measurable decline in fentanyl-related deaths, especially among adolescents. In my experience, few media efforts have had that kind of tangible impact on the ground.
+
+Thank you for bringing this crisis into focus with the seriousness and honesty it demanded. Your work has made a real difference.”`
   }
 ];
 
